@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Sarina");
+
+* {
+  box-sizing: box-border;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  background-color: DodgerBlue;
+  color: MintCream;
+  display: flex;  
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 4.8em;
+  font-family: Sarina;
+}
+
+h1 + input {
+  margin-top: 20px;
+}
+
+input {
+  border: 2px solid MintCream;
+  background-color: DodgerBlue;
+  color: MintCream;
+  
+  font-family: Helvetica Neue, sans-serif;
+  font-size: 1.5em;
+  font-weight: 200;
+  letter-spacing: .5px;
+  
+  opacity: 1;  
+  outline: 0;
+  
+  padding: 15px 20px;
+  
+  max-width: 450px;
+  min-width: 300px;
+  
+  width: 60vw;
+
+  transition: all .2s ease-in-out;
+  
+  &:hover, &:focus {
+    transform: scale(1.1);
+  }
+}

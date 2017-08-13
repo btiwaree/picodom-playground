@@ -1,0 +1,28 @@
+{
+  "name": "picodom-playground",
+  "version": "0.0.1",
+  "description": "Experimenting with picodom",
+  "main": "src/index.js",
+  "repository": "https://github.com/btiwaree/picodom-playground.git",
+  "author": "Bishesh Tiwaree <bisheshtiwaree@live.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.4",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "picodom": "^0.0.8"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --port 3000 --open"
+  }
+}
