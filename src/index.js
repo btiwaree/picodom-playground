@@ -1,32 +1,63 @@
-import { h, patch } from 'picodom';
-import './style.css';
-
-let element, oldNode;
 /** @jsx h */
 
-function render(newNode) {
-	return (element = patch(
-    	document.body,
-    	element,
-    	oldNode,
-    	(oldNode = newNode)
-  	));
+import { h, patch } from 'picodom';
+
+import './style.css';
+import store from './store';
+
+const render = domPatcher(view, store);
+
+store.subscribe(render);
+
+render();
+
+function domPatcher(view, store) {
+  let element, oldNode;
+  return () => {
+    element = patch(oldNode, (oldNode = view(store)), element)
+  }
 }
 
-const greeting = 'Hello.';
+function view(store) {
+  return (
+    <InputView
+      state={store.getState()}
+      onSetName = {(payload) => {
+        store.dispatch({
+          type: 'SET_NAME',
+          payload,
+        })
+      }}
+      componentDidMount = {() => {
+        const name = localStorage.getItem('name');
+        /*
+        FIX ME!!!
 
-function inputView(state) {
-  	return (
-    	<div>
-      		<h1>{state.trim() === '' ? "What's up?" : state}</h1>
-	      	<input
-		        autofocus
-		        type="text"
-		        value={state}
-		        oninput={e => render(inputView(e.target.value))}
-	      	/>      
-    	</div>
-  	)
+        store.dispatch({
+          type: 'SET_NAME',
+          payload: name,
+        });
+        */
+      }}
+      componentDidUpdate = {() => {
+        const { name } = store.getState();
+        localStorage.setItem('name', name);
+      }}
+    />
+  )
+}
+
+function InputView({ state, onSetName, componentDidMount, componentDidUpdate }) {
+  const { name } = state;
+    return (
+      <div>
+          <h1 onupdate={componentDidUpdate}>{name.trim() === '' ? "What's up?" : name}</h1>
+          <input
+            autofocus
+            type="text"
+            value={name}
+            oninput={e => onSetName(e.target.value)}
+          />      
+      </div>
+    )
 };
-
-render(inputView(greeting));

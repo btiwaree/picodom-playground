@@ -6,6 +6,7 @@ module.exports = {
     	filename: 'bundle.js',
     	path: path.resolve(__dirname, 'dist')
   	},
+  	devtool: 'inline-source-map',
   	devServer: {
 		contentBase: './dist'
 	},
@@ -17,7 +18,7 @@ module.exports = {
 		      	use: {
 		        	loader: 'babel-loader',
 			        options: {
-			          	presets: ['env', 'react']
+			          	presets: ['es2015', 'env', 'react', 'stage-2']
 			        }
 		      	}
 	    	},
