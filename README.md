@@ -1,5 +1,5 @@
 # picodom-playground
 
 Includes
-- Lifeyclce(like) events
+- Lifeyclce hooks
 - Usage of Redux to create store, subscribe to it
